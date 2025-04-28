@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কাঠগোলাপ - Handcrafted Elegance</title>
+  <!-- Favicon (Title Icon) -->
+  <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="shortcut icon" href="logo.png">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&Lora&Poppins:wght@400;700&Dancing+Script:wght@700&Montserrat:wght@400&display=swap" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Variables for Theming */
+    :root {
+      --bg-color: #1a1a1a;
+      --text-color: #fff;
+      --text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      --glass-bg: rgba(40, 40, 40, 0.3);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --neo-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(60, 60, 60, 0.3);
+      --product-hover-bg: linear-gradient(45deg, rgba(255, 111, 97, 0.3), rgba(255, 214, 10, 0.3));
+      --input-bg: rgba(255, 255, 255, 0.1);
+      --placeholder-color: rgba(255, 255, 255, 0.7);
+    }
+    body.light-mode {
+      --bg-color: linear-gradient(135deg, #ffebee, #e0f7fa);
+      --text-color: #1a1a1a;
+      --text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --neo-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.1);
+      --product-hover-bg: linear-gradient(45deg, rgba(255, 111, 97, 0.2), rgba(255, 214, 10, 0.2));
+      --input-bg: rgba(255, 255, 255, 0.1);
+      --placeholder-color: rgba(255, 255, 255, 0.7);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: var(--bg-color);
+    }
+    /* Gradient Animation for কাঠগোলাপ */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    /* Glassmorphism and Neomorphism Base */
+    .glass-neo {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--neo-shadow);
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .glass-neo:hover {
+      transform: translateY(-3px);
+      box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.15), -12px -12px 24px rgba(255, 255, 255, 0.15);
+    }
+    /* Prevent Popups from Moving on Hover */
+    .order-popup.glass-neo, .details-popup.glass-neo, .warning-modal.glass-neo, .cart-modal.glass-neo {
+      transform: translate(-50%, -50%);
+      transition: none;
+    }
+    .order-popup.glass-neo:hover, .details-popup.glass-neo:hover, .warning-modal.glass-neo:hover, .cart-modal.glass-neo:hover {
+      transform: translate(-50%, -50%);
+      box-shadow: var(--neo-shadow);
+    }
+    /* Fallback for unsupported backdrop-filter */
+    @supports not (backdrop-filter: blur(12px)) {
+      .glass-neo {
+        background: var(--glass-bg);
+      }
+    }
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+    }
+    .logo span {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      color: #fff;
+      margin-left: 8px;
+      text-shadow: var(--text-shadow);
+      background: linear-gradient(45deg, #ff6f61, #ffd60a);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 5s ease infinite; /* Gradient shift animation */
+    }
+    .logo span:hover {
+      animation: pulse 1s ease; /* Pulse on hover */
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .hamburger, .cart-icon {
+      font-size: 1.5em;
+      color: #fff;
+      cursor: pointer;
+      z-index: 2000;
+      transition: transform 0.3s ease;
+    }
+    .hamburger.active .fa-bars::before {
+      content: "\f00d";
+    }
+    .hamburger:hover, .hamburger.active, .cart-icon:hover {
+      transform: rotate(90deg) scale(1.1);
+    }
+    .cart-icon {
+      position: relative;
+    }
+    .cart-icon .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      font-size: 0.6em;
+      padding: 2px 6px;
+      border-radius: 50%;
+      text-shadow: var(--text-shadow);
+    }
+    /* Sidebar (Left-Sliding) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      transition: left 0.3s ease;
+      z-index: 1500;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-right: 1px solid var(--glass-border);
+      box-shadow: var(--neo-shadow);
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .sidebar li {
+      margin: 10px 0;
+    }
+    .sidebar a, .theme-toggle {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .sidebar a:hover, .theme-toggle:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+    }
+    .sidebar a i, .theme-toggle i {
+      margin-right: 10px;
+    }
+    /* Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 800px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 20px;
+      z-index: 2000;
+      display: none;
+    }
+    .cart-modal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+      text-align: center;
+      padding: 10px 0;
+      background: linear-gradient(45deg, #ff6f61, #ffd60a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cart-modal .empty-cart {
+      text-align: center;
+      font-family: 'Lora', serif;
+      color: #fff;
+      font-size: 1.2em;
+      text-shadow: var(--text-shadow);
+      padding: 20px;
+    }
+    .cart-modal .empty-cart i {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin: 10px 0;
+      background: var(--glass-bg);
+      border-radius: 10px;
+      gap: 15px;
+    }
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+    }
+    .cart-item .info {
+      flex: 1;
+    }
+    .cart-item h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.1em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .cart-item p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9em;
+      color: #ffd60a;
+      text-shadow: var(--text-shadow);
+    }
+    .cart-item .quantity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cart-item .quantity button {
+      padding: 5px 10px;
+      font-size: 0.9em;
+      cursor: pointer;
+      color: #1a1a1a;
+      background: linear-gradient(45deg, #ffd60a, #ff6f61);
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      border-radius: 5px;
+    }
+    .cart-item .quantity button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .cart-item .quantity span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .cart-item .remove-btn {
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    .cart-item .remove-btn:hover {
+      transform: scale(1.2);
+      color: #ff3e96;
+    }
+    .cart-footer {
+      padding: 20px;
+      text-align: center;
+    }
+    .cart-footer .total {
+      font-family: 'Lora', serif;
+      font-size: 1.2em;
+      color: #ffd60a;
+      text-shadow: var(--text-shadow);
+      margin-bottom: 15px;
+    }
+    .cart-footer button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      margin: 5px;
+      border-radius: 10px;
+    }
+    .cart-footer .clear-cart {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+    }
+    .cart-footer .checkout-btn {
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+    }
+    .cart-footer button:hover {
+      background: linear-gradient(45deg, #00c4b4, #2e2e2e);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('bg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4em;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ff6f61, #ffd60a);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: gradientShift 7s ease infinite, scaleUp 1s ease; /* Gradient shift + scale-up on load */
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .hero p {
+      font-family: 'Lora', serif;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-shadow: var(--text-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .hero p i {
+      color: #ffd60a;
+      transition: transform 0.3s;
+    }
+    .hero p i:hover {
+      transform: scale(1.2);
+    }
+    .hero button {
+      padding: 15px 30px;
+      font-size: 1.3em;
+      cursor: pointer;
+      color: #1a1a1a;
+      background: linear-gradient(45deg, #ffd60a, #ff6f61);
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+    .hero button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Shop */
+    .shop {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .shop h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      background: linear-gradient(45deg, #ff6f61, #ffd60a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+    .search-bar {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .search-bar input {
+      padding: 12px 40px 12px 20px;
+      width: 300px;
+      max-width: 100%;
+      font-size: 1em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+      background: var(--input-bg);
+    }
+    .search-bar input::placeholder {
+      color: var(--placeholder-color);
+    }
+    .search-bar i {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    .search-bar i:hover {
+      transform: translateY(-50%) scale(1.2) rotate(15deg);
+    }
+    .sort-bar {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sort-bar select {
+      padding: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+      background: var(--input-bg);
+    }
+    .filters {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .filter-btn {
+      padding: 12px 24px;
+      margin: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      background: linear-gradient(45deg, #ffd60a, #ff6f61);
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .filter-btn i, .product-card i, .social-buttons i {
+      margin-right: 5px;
+      transition: transform 0.3s;
+    }
+    .filter-btn i:hover, .product-card i:hover, .social-buttons i:hover {
+      transform: scale(1.2) rotate(15deg);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .product-card {
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .product-card:hover {
+      background: var(--product-hover-bg);
+    }
+    .product-card .product-number {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #ffd60a, #ff9100);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid var(--glass-border);
+    }
+    .product-card h3 {
+      margin: 15px 0 10px;
+      font-family: 'Lora', serif;
+      font-size: 1.4em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .product-card p {
+      color: #ffd60a;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      margin-bottom: 10px;
+      text-shadow: var(--text-shadow);
+    }
+    .product-card .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .product-card button {
+      padding: 10px 20px;
+      font-size: 0.95em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      width: 100%;
+    }
+    .product-card button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .order-btn {
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+    }
+    .details-btn {
+      background: linear-gradient(45deg, #00c4b4, #2e2e2e);
+    }
+    .add-to-cart-btn {
+      background: linear-gradient(45deg, #ffd60a, #ff9100);
+    }
+    /* Popup Close Icon */
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .popup-close:hover {
+      transform: scale(1.2);
+    }
+    /* Order Popup */
+    .order-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 30px;
+      z-index: 2000;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .order-popup h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      text-shadow: var(--text-shadow);
+    }
+    .order-popup span {
+      color: #ffd60a;
+      font-family: 'Lora', serif;
+    }
+    .order-form {
+      margin-bottom: 20px;
+    }
+    .order-form input, .order-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+      background: var(--input-bg);
+    }
+    .order-form input::placeholder, .order-form textarea::placeholder {
+      color: var(--placeholder-color);
+    }
+    .order-form button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+    }
+    .order-form button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .order-options {
+      display: none;
+    }
+    .order-options a {
+      display: block;
+      padding: 12px;
+      margin: 10px 0;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      text-shadow: var(--text-shadow);
+    }
+    .order-options a:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+    }
+    .email-btn {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+    }
+    .whatsapp-btn {
+      background: linear-gradient(45deg, #25D366, #128C7E);
+    }
+    .facebook-btn {
+      background: linear-gradient(45deg, #3b5998, #8b9dc3);
+    }
+    /* Warning Modal */
+    .warning-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      z-index: 2500;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .warning-modal p {
+      font-family: 'Lora', serif;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+      text-shadow: var(--text-shadow);
+    }
+    .warning-modal .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .warning-modal button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+    .warning-modal .okay-btn {
+      background: linear-gradient(45deg, #ffd60a, #ff6f61);
+    }
+    .warning-modal .cancel-btn {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+    }
+    .warning-modal button:hover {
+      background: linear-gradient(45deg, #00c4b4, #2e2e2e);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Details Popup */
+    .details-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      z-index: 2000;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      display: none;
+    }
+    .details-popup img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 1px solid var(--glass-border);
+    }
+    .details-popup h3 {
+      font-family: 'Lora', serif;
+      color: #fff;
+      margin-bottom: 10px;
+      font-size: 1.6em;
+      text-shadow: var(--text-shadow);
+    }
+    .details-popup p {
+      margin: 10px 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .details-popup button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+    }
+    .details-popup button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Gallery Modal */
+    .gallery-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .gallery-modal img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+    }
+    .gallery-modal .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #fff;
+      font-size: 2em;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-modal .close:hover {
+      transform: scale(1.2);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1500;
+    }
+    /* Contact */
+    .contact {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      background: linear-gradient(45deg, #00c4b4, #ff9100);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 1em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+      background: var(--input-bg);
+    }
+    .contact input::placeholder, .contact textarea::placeholder {
+      color: var(--placeholder-color);
+    }
+    .contact button {
+      padding: 12px 25px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #00c4b4, #2e2e2e);
+    }
+    .contact button:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .social-buttons {
+      margin-top: 20px;
+    }
+    .social-buttons a {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 8px;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 1.2em;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #ffd60a, #ff6f61);
+    }
+    .social-buttons a.follow-btn {
+      background: linear-gradient(45deg, #00c4b4, #2e2e2e);
+      font-size: 1.1em;
+      padding: 12px 25px;
+    }
+    .social-buttons a:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* About */
+    .about {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      background: linear-gradient(45deg, #ff6f61, #ffd60a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    .about p {
+      font-family: 'Lora', serif;
+      text-align: center;
+      font-size: 1.1em;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #1a1a1a;
+      z-index: 900;
+      background: linear-gradient(45deg, #ff6f61, #1a1a1a);
+    }
+    .back-to-top:hover {
+      background: linear-gradient(45deg, #ff3e96, #6a1b9a);
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      text-shadow: var(--text-shadow);
+    }
+    .footer .credit a {
+      color: #ffd60a;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .footer .credit a:hover {
+      color: #ff3e96;
+      transform: scale(1.05);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3.5em;
+      }
+      .hero p {
+        font-size: 1.3em;
+      }
+      .shop h2, .contact h2, .about h2 {
+        font-size: 2em;
+      }
+      .hero {
+        background-attachment: scroll;
+      }
+      .product-card {
+        padding: 15px;
+      }
+      .product-card img {
+        height: 180px;
+      }
+      .search-bar input {
+        width: 90%;
+      }
+      .filter-btn {
+        padding: 10px 18px;
+        font-size: 0.9em;
+      }
+      .order-popup, .details-popup, .warning-modal {
+        max-width: 90%;
+        padding: 20px;
+      }
+      .order-form input, .order-form textarea {
+        font-size: 0.9em;
+      }
+      .order-options a {
+        font-size: 1em;
+        padding: 10px;
+      }
+      .social-buttons a {
+        padding: 12px 25px;
+        font-size: 1.1em;
+        margin: 5px;
+      }
+      .social-buttons a.follow-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+      }
+      .sidebar {
+        width: 250px;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .sidebar a, .theme-toggle {
+        font-size: 1em;
+        padding: 8px 16px;
+      }
+      .cart-modal {
+        width: 95%;
+        max-height: 70vh;
+        padding: 15px;
+      }
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .cart-item-img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+      .cart-item .quantity {
+        margin-top: 5px;
+      }
+      .gallery-modal {
+        width: 95%;
+        max-height: 70vh;
+        padding: 10px;
+      }
+      .gallery-modal img {
+        max-height: 60vh;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 3em;
+      }
+      .hero p {
+        font-size: 1.1em;
+      }
+      .hero button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+      }
+      .sidebar {
+        width: 200px;
+      }
+      .sidebar a, .theme-toggle {
+        font-size: 0.9em;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar glass-neo">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo.png" alt="কাঠগোলাপ Logo">
+        <span>কাঠগোলাপ</span>
+      </div>
+      <div class="nav-right">
+        <div class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="badge">0</span></div>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar (Left-Sliding) -->
+  <div class="sidebar glass-neo" role="navigation" aria-label="Main menu">
+    <ul>
+      <li><a href="#home" aria-label="Go to Home" class="glass-neo"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#shop" aria-label="Go to Shop" class="glass-neo"><i class="fas fa-store"></i> Shop</a></li>
+      <li><a href="#about" aria-label="Go to About" class="glass-neo"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="#contact" aria-label="Go to Contact" class="glass-neo"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li>
+        <button class="theme-toggle glass-neo" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i> Toggle Theme
+        </button>
+      </li>
+    </ul>
+  </div>
+  <!-- Cart Modal -->
+  <div class="cart-modal glass-neo" role="dialog" aria-label="Shopping cart">
+    <span class="popup-close" aria-label="Close cart modal">×</span>
+    <h2>Your Cart</h2>
+    <div class="empty-cart">
+      <i class="fas fa-shopping-cart"></i><br>
+      Your cart is empty!
+    </div>
+    <ul class="cart-items"></ul>
+    <div class="cart-footer">
+      <p class="total">Total: $0</p>
+      <button class="clear-cart glass-neo">Clear Cart <i class="fas fa-trash"></i></button>
+      <button class="checkout-btn glass-neo">Proceed to Checkout <i class="fas fa-check"></i></button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="home" class="hero animate__animated animate__fadeIn">
+    <div>
+      <p style="font-family: 'Dancing Script', cursive; font-size: 60px;" class="animate__animated animate__fadeInUp animate__delay-1s"> Welcome to Our Shop!!!</p>
+      <h1>কাঠগোলাপ</h1>
+      <p style="font-family: 'Dancing Script', cursive; font-size: 40px;" class="animate__animated animate__fadeInUp animate__delay-1s"><i class="fas fa-heart"></i> Handcrafted Elegance<i class="fas fa-heart"></i></p>
+      <button class="glass-neo" onclick="$('html, body').animate({scrollTop: $('#shop').offset().top}, 800)">Shop Now <i class="fas fa-shopping-cart"></i></button>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section id="shop" class="shop">
+    <h2 class="animate__animated animate__fadeInUp">Our Collection</h2>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Search products..." aria-label="Search products" class="glass-neo">
+ <!--     <i class="fas fa-search"></i>  -->
+    </div>
+    <div class="sort-bar">
+      <select id="sort" aria-label="Sort products" class="glass-neo">
+        <option value="default"><i class="fas fa-sort"></i> Sort by: Default</option>
+        <option value="price-low"><i class="fas fa-sort-amount-up"></i> Price: Low to High</option>
+        <option value="price-high"><i class="fas fa-sort-amount-down"></i> Price: High to Low</option>
+      </select>
+    </div>
+    <div class="filters glass-neo">
+      <button class="filter-btn glass-neo active" data-filter="all" aria-label="Show all products"><i class="fas fa-th"></i> All</button>
+      <button class="filter-btn glass-neo" data-filter="bangles" aria-label="Show bangles"><i class="fas fa-ring"></i> Bangles</button>
+      <button class="filter-btn glass-neo" data-filter="bracelets" aria-label="Show bracelets"><i class="fas fa-gem"></i> Bracelets</button>
+      <button class="filter-btn glass-neo" data-filter="earrings" aria-label="Show earrings"><i class="fas fa-star"></i> Earrings</button>
+      <button class="filter-btn glass-neo" data-filter="necklaces" aria-label="Show necklaces"><i class="fas fa-heart"></i> Necklaces</button>
+      <button class="filter-btn glass-neo" data-filter="shari" aria-label="Show shari"><i class="fas fa-tshirt"></i> Shari</button>
+      <button class="filter-btn glass-neo" data-filter="panjabi" aria-label="Show panjabi"><i class="fas fa-shirt"></i> Panjabi</button>
+    </div>
+    <div class="product-grid">
+      <!-- Bangles -->
+      <div class="product-card glass-neo" data-category="bangles" data-number="001">
+        <span class="product-number glass-neo">#001</span>
+        <img src="001.jpg" alt="Coral Bangles" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-ring"></i> Coral Bangles</h3>
+        <p>$30</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Coral Bangles" data-img="001.jpg" data-desc="Elegant coral bangles with intricate designs." data-ingredients="Coral, Brass" data-price="$30" aria-label="View Coral Bangles Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Coral Bangles" data-number="#001" aria-label="Order Coral Bangles">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Coral Bangles" data-number="#001" data-price="30" aria-label="Add Coral Bangles to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="bangles" data-number="002">
+        <span class="product-number glass-neo">#002</span>
+        <img src="002.jpg" alt="Gold Bangles" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-ring"></i> Gold Bangles</h3>
+        <p>$45</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Gold Bangles" data-img="002.jpg" data-desc="Luxurious gold-tone bangles." data-ingredients="Gold Alloy, Beads" data-price="$45" aria-label="View Gold Bangles Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Gold Bangles" data-number="#002" aria-label="Order Gold Bangles">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Gold Bangles" data-number="#002" data-price="45" aria-label="Add Gold Bangles to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <!-- Bracelets -->
+      <div class="product-card glass-neo" data-category="bracelets" data-number="003">
+        <span class="product-number glass-neo">#003</span>
+        <img src="003.jpg" alt="Beaded Bracelet" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-gem"></i> Beaded Bracelet</h3>
+        <p>$25</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Beaded Bracelet" data-img="003.jpg" data-desc="Colorful beaded bracelet for casual wear." data-ingredients="Glass Beads, Thread" data-price="$25" aria-label="View Beaded Bracelet Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Beaded Bracelet" data-number="#003" aria-label="Order Beaded Bracelet">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Beaded Bracelet" data-number="#003" data-price="25" aria-label="Add Beaded Bracelet to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="bracelets" data-number="004">
+        <span class="product-number glass-neo">#004</span>
+        <img src="004.jpg" alt="Silver Bracelet" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-gem"></i> Silver Bracelet</h3>
+        <p>$35</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Silver Bracelet" data-img="004.jpg" data-desc="Sleek silver bracelet with modern charm." data-ingredients="Sterling Silver" data-price="$35" aria-label="View Silver Bracelet Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Silver Bracelet" data-number="#004" aria-label="Order Silver Bracelet">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Silver Bracelet" data-number="#004" data-price="35" aria-label="Add Silver Bracelet to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <!-- Earrings -->
+      <div class="product-card glass-neo" data-category="earrings" data-number="005">
+        <span class="product-number glass-neo">#005</span>
+        <img src="005.jpg" alt="Drop Earrings" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-star"></i> Drop Earrings</h3>
+        <p>$20</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Drop Earrings" data-img="005.jpg" data-desc="Elegant drop earrings for any occasion." data-ingredients="Brass, Crystals" data-price="$20" aria-label="View Drop Earrings Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Drop Earrings" data-number="#005" aria-label="Order Drop Earrings">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Drop Earrings" data-number="#005" data-price="20" aria-label="Add Drop Earrings to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="earrings" data-number="006">
+        <span class="product-number glass-neo">#006</span>
+        <img src="006.jpg" alt="Hoop Earrings" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-star"></i> Hoop Earrings</h3>
+        <p>$28</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Hoop Earrings" data-img="006.jpg" data-desc="Bold hoop earrings with a modern twist." data-ingredients="Gold Alloy" data-price="$28" aria-label="View Hoop Earrings Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Hoop Earrings" data-number="#006" aria-label="Order Hoop Earrings">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Hoop Earrings" data-number="#006" data-price="28" aria-label="Add Hoop Earrings to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <!-- Necklaces -->
+      <div class="product-card glass-neo" data-category="necklaces" data-number="007">
+        <span class="product-number glass-neo">#007</span>
+        <img src="007.jpg" alt="Pearl Necklace" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-heart"></i> Pearl Necklace</h3>
+        <p>$50</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Pearl Necklace" data-img="007.jpg" data-desc="Classic pearl necklace for timeless elegance." data-ingredients="Freshwater Pearls, Silver" data-price="$50" aria-label="View Pearl Necklace Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Pearl Necklace" data-number="#007" aria-label="Order Pearl Necklace">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Pearl Necklace" data-number="#007" data-price="50" aria-label="Add Pearl Necklace to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="necklaces" data-number="008">
+        <span class="product-number glass-neo">#008</span>
+        <img src="008.jpg" alt="Gemstone Necklace" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-heart"></i> Gemstone Necklace</h3>
+        <p>$60</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Gemstone Necklace" data-img="008.jpg" data-desc="Vibrant gemstone necklace for bold style." data-ingredients="Gemstones, Gold Alloy" data-price="$60" aria-label="View Gemstone Necklace Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Gemstone Necklace" data-number="#008" aria-label="Order Gemstone Necklace">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Gemstone Necklace" data-number="#008" data-price="60" aria-label="Add Gemstone Necklace to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <!-- Shari -->
+      <div class="product-card glass-neo" data-category="shari" data-number="009">
+        <span class="product-number glass-neo">#009</span>
+        <img src="009.jpg" alt="Floral Shari" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-tshirt"></i> Floral Shari</h3>
+        <p>$80</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Floral Shari" data-img="009.jpg" data-desc="Hand-painted floral shari with vibrant patterns." data-ingredients="Silk, Natural Dyes" data-price="$80" aria-label="View Floral Shari Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Floral Shari" data-number="#009" aria-label="Order Floral Shari">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Floral Shari" data-number="#009" data-price="80" aria-label="Add Floral Shari to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="shari" data-number="010">
+        <span class="product-number glass-neo">#010</span>
+        <img src="010.jpg" alt="Silk Shari" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-tshirt"></i> Silk Shari</h3>
+        <p>$100</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Silk Shari" data-img="010.jpg" data-desc="Luxurious silk shari with hand-painted details." data-ingredients="Pure Silk, Dyes" data-price="$100" aria-label="View Silk Shari Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Silk Shari" data-number="#010" aria-label="Order Silk Shari">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Silk Shari" data-number="#010" data-price="100" aria-label="Add Silk Shari to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <!-- Panjabi -->
+      <div class="product-card glass-neo" data-category="panjabi" data-number="011">
+        <span class="product-number glass-neo">#011</span>
+        <img src="011.jpg" alt="Embroidered Panjabi" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-shirt"></i> Embroidered Panjabi</h3>
+        <p>$70</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Embroidered Panjabi" data-img="011.jpg" data-desc="Hand-embroidered panjabi for festive occasions." data-ingredients="Cotton, Thread" data-price="$70" aria-label="View Embroidered Panjabi Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Embroidered Panjabi" data-number="#011" aria-label="Order Embroidered Panjabi">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Embroidered Panjabi" data-number="#011" data-price="70" aria-label="Add Embroidered Panjabi to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+      <div class="product-card glass-neo" data-category="panjabi" data-number="012">
+        <span class="product-number glass-neo">#012</span>
+        <img src="012.jpg" alt="Cotton Panjabi" class="gallery-img" loading="lazy">
+        <h3><i class="fas fa-shirt"></i> Cotton Panjabi</h3>
+        <p>$65</p>
+        <div class="buttons">
+          <button class="details-btn glass-neo" data-name="Cotton Panjabi" data-img="012.jpg" data-desc="Comfortable cotton panjabi with subtle designs." data-ingredients="Cotton" data-price="$65" aria-label="View Cotton Panjabi Details">See Details <i class="fas fa-info-circle"></i></button>
+          <button class="order-btn glass-neo" data-name="Cotton Panjabi" data-number="#012" aria-label="Order Cotton Panjabi">Order Now <i class="fas fa-shopping-bag"></i></button>
+          <button class="add-to-cart-btn glass-neo" data-name="Cotton Panjabi" data-number="#012" data-price="65" aria-label="Add Cotton Panjabi to Cart">Add to Cart <i class="fas fa-cart-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about glass-neo">
+    <h2 class="animate__animated animate__fadeInUp">About কাঠগোলাপ</h2>
+    <p style="font-family: 'Dancing Script';">কাঠগোলাপ brings you handcrafted jewelry and hand-painted shari and panjabi, blending tradition with modern elegance. Each piece is crafted with love and care, celebrating the artistry of our skilled artisans.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact glass-neo">
+    <h2 class="animate__animated animate__fadeInUp">Get in Touch</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" class="glass-neo">
+      <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" class="glass-neo">
+      <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message" class="glass-neo"></textarea>
+      <button type="submit" class="glass-neo">Send Message <i class="fas fa-paper-plane"></i></button>
+    </form>
+    <div class="social-buttons">
+      <a href="https://wa.me/+8801903269549" target="_blank" class="glass-neo"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+      <a href="https://facebook.com/iamriifaaat" target="_blank" class="glass-neo"><i class="fab fa-facebook"></i> Order on Facebook</a>
+      <a href="https://facebook.com/iamriifaaat" target="_blank" class="glass-neo follow-btn"><i class="fab fa-facebook"></i> Follow on Facebook</a>
+      <a href="https://wa.me/+8801903269549" target="_blank" class="glass-neo follow-btn"><i class="fab fa-whatsapp"></i> Follow on WhatsApp</a>
+      <a href="https://instagram.com" target="_blank" class="glass-neo follow-btn"><i class="fab fa-instagram"></i> Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- Order Popup -->
+  <div class="order-popup glass-neo" role="dialog" aria-labelledby="order-title">
+    <span class="popup-close" aria-label="Close order popup">×</span>
+    <h2 id="order-title">Order <span id="order-product"></span> (<span id="order-number"></span>)</h2>
+    <form class="order-form">
+      <input type="tel" id="customer-phone" placeholder="Your Phone Number" required aria-label="Your Phone Number" class="glass-neo">
+      <input type="email" id="customer-email" placeholder="Your Email" required aria-label="Your Email" class="glass-neo">
+      <textarea id="customer-address" placeholder="Your Address" rows="3" required aria-label="Your Address" class="glass-neo"></textarea>
+      <button type="submit" class="glass-neo submit-order">Submit Details <i class="fas fa-check"></i></button>
+    </form>
+    <div class="order-options">
+      <a href="#" class="email-btn glass-neo" data-method="email"><i class="fas fa-envelope"></i> Email</a>
+      <a href="#" class="whatsapp-btn glass-neo" data-method="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#" class="facebook-btn glass-neo" data-method="facebook" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </div>
+
+  <!-- Details Popup -->
+  <div class="details-popup glass-neo" role="dialog" aria-labelledby="details-title">
+    <span class="popup-close" aria-label="Close details popup">×</span>
+    <h3 id="details-title"></h3>
+    <img src="" alt="Product Image">
+    <p class="desc"></p>
+    <p class="ingredients"></p>
+    <p class="price"></p>
+    <button class="order-btn glass-neo" id="details-order-btn" aria-label="Order this product">Order Now <i class="fas fa-shopping-bag"></i></button>
+  </div>
+
+  <!-- Warning Modal -->
+  <div class="warning-modal glass-neo" role="dialog" aria-labelledby="warning-message">
+    <p id="warning-message"></p>
+    <div class="buttons">
+      <button class="okay-btn glass-neo" aria-label="Proceed">Okay</button>
+      <button class="cancel-btn glass-neo" aria-label="Cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div class="gallery-modal" role="dialog" aria-label="Image gallery">
+    <span class="close" aria-label="Close gallery">×</span>
+    <img src="" alt="Product Image">
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top glass-neo" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Footer -->
+  <footer class="footer glass-neo">
+    <p style="font-family: 'Dancing Script', cursive;">কাঠগোলাপ - Handcrafted Elegance © 2025</p>
+    <p style="font-family: 'Dancing Script', cursive;" class="credit">Made with 🤍 by <a href="https://facebook.com/iamriifaaat" target="_blank">Rifatuzzaman</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Theme Toggle
+    $(document).ready(function() {
+      if (localStorage.getItem('theme') === 'light') {
+        $('body').addClass('light-mode');
+        $('.theme-toggle i').removeClass('fa-moon').addClass('fa-sun');
+        $('.theme-toggle').html('<i class="fas fa-sun"></i> Toggle Theme');
+      } else {
+        $('body').removeClass('light-mode');
+        $('.theme-toggle i').removeClass('fa-sun').addClass('fa-moon');
+        $('.theme-toggle').html('<i class="fas fa-moon"></i> Toggle Theme');
+      }
+
+      $('.theme-toggle').click(function() {
+        $('body').toggleClass('light-mode');
+        if ($('body').hasClass('light-mode')) {
+          localStorage.setItem('theme', 'light');
+          $('.theme-toggle i').removeClass('fa-moon').addClass('fa-sun');
+          $('.theme-toggle').html('<i class="fas fa-sun"></i> Toggle Theme');
+        } else {
+          localStorage.setItem('theme', 'dark');
+          $('.theme-toggle i').removeClass('fa-sun').addClass('fa-moon');
+          $('.theme-toggle').html('<i class="fas fa-moon"></i> Toggle Theme');
+        }
+      });
+    });
+
+    // Cart Management
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateCartUI() {
+      const $cartItems = $('.cart-items');
+      $cartItems.empty();
+      let total = 0;
+      let itemCount = 0;
+
+      if (cart.length === 0) {
+        $('.empty-cart').show();
+        $('.cart-items').hide();
+        $('.cart-footer').hide();
+      } else {
+        $('.empty-cart').hide();
+        $('.cart-items').show();
+        $('.cart-footer').show();
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          itemCount += item.quantity;
+          const imageSrc = item.number.replace('#', '') + '.jpg'; // e.g., #001 -> 001.jpg
+          $cartItems.append(`
+            <li class="cart-item" data-index="${index}">
+              <img src="${imageSrc}" alt="${item.name}" class="cart-item-img">
+              <div class="info">
+                <h3>${item.name}</h3>
+                <p>Number: ${item.number}</p>
+                <p>Price: $${item.price} x ${item.quantity} = $${itemTotal}</p>
+              </div>
+              <div class="quantity">
+                <button class="decrease">-</button>
+                <span>${item.quantity}</span>
+                <button class="increase">+</button>
+              </div>
+              <i class="fas fa-trash remove-btn"></i>
+            </li>
+          `);
+        });
+      }
+
+      $('.cart-footer .total').text(`Total: $${total}`);
+      $('.cart-icon .badge').text(itemCount);
+      saveCart();
+    }
+
+    // Add to Cart
+    $('.add-to-cart-btn').click(function() {
+      const name = $(this).data('name');
+      const number = $(this).data('number');
+      const price = parseFloat($(this).data('price'));
+      const existingItem = cart.find(item => item.number === number);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, number, price, quantity: 1 });
+      }
+
+      updateCartUI();
+      $('.cart-icon').addClass('animate__animated animate__bounce');
+    });
+
+    // Cart Modal Toggle
+    $('.cart-icon').click(function() {
+      $('.cart-modal').fadeToggle();
+      $('.overlay').fadeToggle();
+      if ($('.cart-modal').is(':visible')) {
+        $('.overlay').css('background', 'rgba(0,0,0,0.9)'); // Darker overlay
+        $('.cart-modal .popup-close').focus();
+      } else {
+        $('.overlay').css('background', 'rgba(0,0,0,0.7)'); // Reset to default overlay
+      }
+    });
+
+    // Close Cart Modal
+    $('.cart-modal .popup-close, .overlay').click(function(e) {
+      // Prevent closing overlay if sidebar is clicked
+      if ($(e.target).hasClass('overlay') && $('.sidebar').hasClass('active')) {
+        return;
+      }
+      $('.cart-modal').fadeOut();
+      $('.overlay').fadeOut();
+      $('.overlay').css('background', 'rgba(0,0,0,0.7)'); // Reset overlay
+    });
+
+    // Quantity Adjustments
+    $('.cart-items').on('click', '.increase', function() {
+      const index = $(this).closest('.cart-item').data('index');
+      cart[index].quantity += 1;
+      updateCartUI();
+    });
+
+    $('.cart-items').on('click', '.decrease', function() {
+      const index = $(this).closest('.cart-item').data('index');
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      } else {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    });
+
+    // Remove Item
+    $('.cart-items').on('click', '.remove-btn', function() {
+      const index = $(this).closest('.cart-item').data('index');
+      cart.splice(index, 1);
+      updateCartUI();
+    });
+
+    // Clear Cart
+    $('.clear-cart').click(function() {
+      cart = [];
+      updateCartUI();
+    });
+
+    // Proceed to Checkout
+    $('.checkout-btn').click(function() {
+      if (cart.length === 0) return;
+      let cartMessage = 'Order Details:\n';
+      cart.forEach(item => {
+        cartMessage += `Product: ${item.name}, Product Number: ${item.number}, Quantity: ${item.quantity}\n`;
+      });
+      $('#order-product').text('Cart Items');
+      $('#order-number').text('');
+      $('.order-popup').fadeIn();
+      $('.cart-modal').fadeOut();
+      $('.overlay').fadeIn().css('background', 'rgba(0,0,0,0.7)'); // Reset overlay for order popup
+      $('#customer-phone').focus();
+      $('.order-form').data('cart-message', cartMessage);
+    });
+
+    // Hamburger Animation (Left-Sliding Sidebar)
+    $('.hamburger').click(function() {
+      $(this).toggleClass('active');
+      $('.sidebar').toggleClass('active');
+      if ($('.sidebar').hasClass('active')) {
+        $('.sidebar a').first().focus();
+      }
+    });
+
+    // Smooth Scroll (Close Sidebar on Link Click)
+    $('.sidebar a').click(function(e) {
+      e.preventDefault();
+      let target = $(this).attr('href');
+      $('html, body').animate({scrollTop: $(target).offset().top - 60}, 800);
+      $('.sidebar').removeClass('active');
+      $('.hamburger').removeClass('active');
+    });
+
+    // Filter Products
+    $('.filter-btn').click(function() {
+      $('.filter-btn').removeClass('active');
+      $(this).addClass('active');
+      let filter = $(this).data('filter');
+      $('.product-card').each(function() {
+        if (filter === 'all' || $(this).data('category') === filter) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+
+    // Search Products
+    $('#search').on('input', function() {
+      let query = $(this).val().toLowerCase();
+      $('.product-card').each(function() {
+        let name = $(this).find('h3').text().toLowerCase();
+        let category = $(this).data('category').toLowerCase();
+        if (name.includes(query) || category.includes(query)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+
+    // Sort Products
+    $('#sort').change(function() {
+      let value = $(this).val();
+      let $grid = $('.product-grid');
+      let $cards = $grid.children('.product-card');
+      $cards.sort(function(a, b) {
+        let priceA = parseFloat($(a).find('p').text().replace('$', ''));
+        let priceB = parseFloat($(b).find('p').text().replace('$', ''));
+        if (value === 'price-low') return priceA - priceB;
+        if (value === 'price-high') return priceB - priceA;
+        return 0;
+      });
+      $grid.empty().append($cards);
+    });
+
+    // Custom Gallery
+    $('.gallery-img').click(function() {
+      $('.gallery-modal img').attr('src', $(this).attr('src'));
+      $('.gallery-modal').fadeIn();
+      $('.overlay').fadeIn();
+      $('.gallery-modal .close').focus();
+    });
+    $('.gallery-modal .close').click(function() {
+      $('.gallery-modal').fadeOut();
+      $('.overlay').fadeOut();
+    });
+
+    // Order Popup (for product card buttons)
+    $('.order-btn').not('#details-order-btn').click(function() {
+      let product = $(this).data('name');
+      let number = $(this).data('number');
+      $('#order-product').text(product);
+      $('#order-number').text(number);
+      $('.order-popup').fadeIn();
+      $('.overlay').fadeIn();
+      $('#customer-phone').focus();
+      $('.order-form').data('cart-message', `Order Details:\nProduct: ${product}, Product Number: ${number}, Quantity: 1\n`);
+    });
+
+    // Details Popup "Order Now" Button (close details popup, open order popup)
+    $('#details-order-btn').click(function() {
+      let product = $(this).data('name');
+      let number = $(this).data('number');
+      $('#order-product').text(product);
+      $('#order-number').text(number);
+      $('.details-popup').fadeOut();
+      $('.order-popup').fadeIn();
+      $('.overlay').fadeIn();
+      $('#customer-phone').focus();
+      $('.order-form').data('cart-message', `Order Details:\nProduct: ${product}, Product Number: ${number}, Quantity: 1\n`);
+    });
+
+    // Order Form Submission
+    $('.order-form').submit(function(e) {
+      e.preventDefault();
+      let phone = $('#customer-phone').val();
+      let email = $('#customer-email').val();
+      let address = $('#customer-address').val();
+      let cartMessage = $(this).data('cart-message') || '';
+      let message = `${cartMessage}Phone: ${phone}\nEmail: ${email}\nAddress: ${address}`;
+      
+      $('.email-btn').attr('href', `mailto:rifatuzzaman31416@gmail.com?subject=Order: Cart Items&body=${encodeURIComponent(message)}`);
+      $('.whatsapp-btn').attr('href', `https://wa.me/+8801903269549?text=${encodeURIComponent(message)}`);
+      $('.facebook-btn').attr('href', `https://m.me/iamriifaaat?text=${encodeURIComponent(message)}`);
+      
+      $('.order-form').hide();
+      $('.order-options').show();
+      $('.email-btn').focus();
+    });
+
+    // Warning Modal for Order Options
+    let currentLink = '';
+    $('.order-options a').click(function(e) {
+      e.preventDefault();
+      currentLink = $(this).attr('href');
+      let method = $(this).data('method');
+      let warningMessage = '';
+      switch(method) {
+        case 'email':
+          warningMessage = 'You will need Gmail or your mail server to use this feature.';
+          break;
+        case 'whatsapp':
+          warningMessage = 'You will need web WhatsApp or the app installed on your device.';
+          break;
+        case 'facebook':
+          warningMessage = 'You will need Messenger or web Facebook to use this feature.';
+          break;
+      }
+      $('#warning-message').text(warningMessage);
+      $('.warning-modal').fadeIn();
+      $('.overlay').fadeIn();
+      $('.warning-modal .okay-btn').focus();
+    });
+
+    $('.warning-modal .okay-btn').click(function() {
+      $('.warning-modal').fadeOut();
+      $('.overlay').fadeOut();
+      window.open(currentLink, '_blank');
+      $('.order-popup').fadeOut();
+      $('.order-form').show();
+      $('.order-options').hide();
+      $('.order-form')[0].reset();
+      cart = []; // Clear cart after successful order
+      updateCartUI();
+    });
+
+    $('.warning-modal .cancel-btn').click(function() {
+      $('.warning-modal').fadeOut();
+      $('.order-popup').fadeOut();
+      $('.overlay').fadeOut();
+      $('.order-form').show();
+      $('.order-options').hide();
+      $('.order-form')[0].reset();
+    });
+
+    // Details Popup
+    $('.details-btn').click(function() {
+      $('.details-popup h3').text($(this).data('name'));
+      $('.details-popup img').attr('src', $(this).data('img'));
+      $('.details-popup .desc').text('Description: ' + $(this).data('desc'));
+      $('.details-popup .ingredients').text('Materials: ' + $(this).data('ingredients'));
+      $('.details-popup .price').text('Price: ' + $(this).data('price'));
+      $('#details-order-btn').data('name', $(this).data('name'));
+      $('#details-order-btn').data('number', $(this).data('number'));
+      $('.details-popup').fadeIn();
+      $('.overlay').fadeIn();
+      $('#details-order-btn').focus();
+    });
+
+    $('.details-popup .popup-close').click(function() {
+      $('.details-popup').fadeOut();
+      $('.overlay').fadeOut();
+    });
+
+    // Close Popups
+    $('.order-popup .popup-close').click(function() {
+      $('.order-popup').fadeOut();
+      $('.overlay').fadeOut();
+      $('.order-form').show();
+      $('.order-options').hide();
+      $('.order-form')[0].reset();
+    });
+
+    // Contact Form Submission
+    $('#contact-form').submit(function(e) {
+      e.preventDefault();
+      let name = $(this).find('input[name="name"]').val();
+      let email = $(this).find('input[name="email"]').val();
+      let message = $(this).find('textarea[name="message"]').val();
+      let body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+      window.location.href = `mailto:rifatuzzaman31416@gmail.com?subject=Contact Form Submission&body=${encodeURIComponent(body)}`;
+      this.reset();
+    });
+
+    // Back to Top
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.back-to-top').fadeIn();
+      } else {
+        $('.back-to-top').fadeOut();
+      }
+    });
+
+    $('.back-to-top').click(function() {
+      $('html, body').animate({scrollTop: 0}, 800);
+      $('.back-to-top').focus();
+    });
+
+    // Initial Cart Update
+    updateCartUI();
+  </script>
+</body>
+</html>
