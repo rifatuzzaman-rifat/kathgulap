@@ -1,10 +1,10 @@
 # Kathgulap
 
-Kathgulap is a web project for sharing and enjoying beautiful, poetic content. Explore, contribute, and be inspired!
+Kathgulap is a web project for sharing and enjoying beautiful, poetic content.
 
 ## Live Demo
 
-- [GitHub Pages](https://rifatuzzaman-rifat.github.io/kathgulap)
+- [GitHub](https://rifatuzzaman-rifat.github.io/kathgulap)
 - [Netlify](https://kathgulap.netlify.app)
 
 ## Features
