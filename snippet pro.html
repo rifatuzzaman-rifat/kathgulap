@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bangle Snippet Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .form-container {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bangle Snippet Generator</h1>
+
+  <form id="bangleForm">
+    <label for="initialCounter">Initial Counter Value:</label>
+    <input type="number" id="initialCounter" min="1" placeholder="Enter starting number (e.g., 100)" required>
+    <label for="price">Price:</label>
+    <input type="number" id="price" required>
+    <label for="imageFile">Image File:</label>
+    <input type="file" id="imageFile" accept="image/*" required>
+    <div id="imagePreview"></div>
+    <button type="submit">Add Snippet</button>
+  </form>
+
+  <h2>All Snippets</h2>
+  <pre><code id="output"></code></pre>
+  <button onclick="copyToClipboard()">Copy All</button>
+
+  <script>
+    let counter = 1;
+    let isCounterInitialized = false;
+
+    function escapeHTML(str) {
+  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+    const output = document.getElementById('output');
+
+    document.getElementById('imageFile').addEventListener('change', function() {
+      const imageFile = this.files[0];
+      const preview = document.getElementById('imagePreview');
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 200px; max-height: 200px;">`;
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        preview.innerHTML = '';
+      }
+    });
+
+    document.getElementById('bangleForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const initialCounter = parseInt(document.getElementById('initialCounter').value);
+      const price = document.getElementById('price').value.trim();
+      const imageFile = document.getElementById('imageFile').files[0];
+
+      if (!isCounterInitialized) {
+        if (isNaN(initialCounter) || initialCounter < 1) {
+          alert("Please enter a valid initial counter value (1 or greater).");
+          return;
+        }
+        counter = initialCounter;
+        isCounterInitialized = true;
+      }
+
+      if (!price || !imageFile) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const imageName = imageFile.name;
+      const number = String(counter).padStart(3, '0');
+      const productNumber = `KG-${number}`;
+      const productName = productNumber;
+      const category = "bangles";
+      const description = "You can customize size and color";
+
+      const snippet = `<div class="product-card glass-neo" data-category="${category}" data-number="${number}">
+  <span class="product-number glass-neo">#${number}</span>
+  <img src="products/${imageName}" alt="${productName}" class="gallery-img" loading="lazy">
+  <h3><i class="fas fa-ring"></i> Product Number: ${productNumber} </h3>
+  <p>${price} Taka</p>
+  <div class="buttons">
+    <button class="details-btn glass-neo" data-img="products/${imageName}" data-desc="${description}" data-price="${price} Taka" aria-label="View Details"> <i class="fas fa-info-circle"></i> ডিটেইলস দেখুন</button>
+    <button class="order-btn glass-neo" data-name="${productName}" data-number="#${number}" aria-label="Order ${productName}"><i class="fas fa-shopping-bag"></i> অর্ডার করুন </button>
+    <button class="add-to-cart-btn glass-neo" data-name="${productNumber}" data-number="#${number}" data-price="${price}" aria-label="Add ${productNumber} to Cart"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন </button>
+  </div>
+</div>\n`;
+
+      output.innerHTML += escapeHTML(snippet) + "\n";
+      counter++;
+      this.reset();
+      document.getElementById('imagePreview').innerHTML = '';
+      document.getElementById('initialCounter').value = counter;
+    });
+
+    function copyToClipboard() {
+      const text = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("All snippets copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
